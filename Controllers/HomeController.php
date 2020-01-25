@@ -19,6 +19,8 @@ class HomeController extends Controller {
 	    
         $u = new Usuarios();
         $dados['usuario_nome'] = $u->getNome($_SESSION['lgsist']);
+        
+        $dados['sugestoes'] = $u->getSugestoes(3);
 	    
 	    $this->loadTemplate('home', $dados);
 	}

@@ -93,4 +93,31 @@ class Usuarios extends Model {
             $this->db->query($sql);
         }
     }
+    
+    public function getSugestoes($limit = 5)
+    {
+        $array = array();
+        $meuid = $_SESSION['lgsist'];
+        
+        $sql = "
+            SELECT 
+                usuarios.id, usuarios.nome 
+            FROM 
+                usuarios 
+            
+            WHERE 
+                usuarios.id !='$meuid' 
+                
+            ORDER BY RAND()
+            LIMIT $limit
+            ";
+        
+        $sql = $this->db->query($sql);
+        
+        if ($sql->rowCount() > 0) {
+            $array = $sql->fetchAll();
+        }
+        
+        return $array;
+    }
 }
