@@ -5,8 +5,7 @@ function addFriend(id, obj){
 		
 		//Pegando o objeto pela classe e ocultando numa animação
 		$(obj).closest('.sugestaoitem').fadeOut();
-		
-		$.ajax({
+				$.ajax({
 			type: 'POST',
 			url:'ajax/add_friend',
 			data:{id:id}

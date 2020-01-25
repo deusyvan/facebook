@@ -7,7 +7,7 @@
 			<div class="sugestaoitem">
     			<strong><?php echo $pessoa['nome']?></strong>
 				<button class="btn btn-default pull-right" 
-					onclick="addFriend('<?php echo $pessoa['id']?>', this)">+</button>			
+				   onclick="addFriend('<?php echo $pessoa['id']?>', this)">+</button>			
 			</div>
 		<?php endforeach;?>
 		</div>
