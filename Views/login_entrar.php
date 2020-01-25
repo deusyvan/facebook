@@ -3,7 +3,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Sistema</title>
+		<title>Facebook</title>
 		<link href="<?php echo BASE_URL;?>assets/css/bootstrap.min.css" rel='stylesheet' type='text/css'/>
 		<script src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
 	</head>
@@ -12,7 +12,7 @@
 			<div class="container">
 				<div id="navbar">
 					<ul class="nav navbar-nav navbar-left">
-						<li><a href="<?php echo BASE_URL;?>">Sistema 1</a></li>
+						<li><a href="<?php echo BASE_URL;?>">Rede Social</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="<?php echo BASE_URL;?>login">Login</a></li>
