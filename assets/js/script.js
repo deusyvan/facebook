@@ -4,8 +4,7 @@ function addFriend(id, obj){
 	if(id != ''){
 		
 		//Pegando o objeto pela classe e ocultando numa animação
-		$(obj).closest('.sugestaoitem').slideUp('fast');
-		
+		$(obj).closest('.sugestaoitem').fadeOut();
 		
 		$.ajax({
 			type: 'POST',
