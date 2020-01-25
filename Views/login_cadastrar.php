@@ -23,10 +23,13 @@
 		</nav>
 		<div class="container">
 			<h1>Cadastrar</h1>
+			<?php if(!empty($erro)): ?>
+			<div class="alert alert-danger"><?php echo $erro;?></div>
+			<?php endif;?>
 			<form method="POST">
 				<div class="form-group">
 					<label for="nome">Nome</label>
-					<input id="nome" type="email" class="form-control" name="nome"/>
+					<input id="nome" type="text" class="form-control" name="nome"/>
 				</div>
 				<div class="form-group">
 					<label for="email">E-mail</label>

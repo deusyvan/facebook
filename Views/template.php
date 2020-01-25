@@ -5,7 +5,8 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link href="<?php echo BASE_URL;?>assets/css/bootstrap.min.css" rel='stylesheet' type='text/css'/>
-		<script src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/jquery.min.js"></script>
+		<script type="text/javascript" src="<?php echo BASE_URL; ?>assets/js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<nav class="navbar navbar-inverse">
@@ -15,8 +16,16 @@
 						<li><a href="<?php echo BASE_URL;?>">Sistema 1</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="<?php echo BASE_URL;?>login/entrar">Login</a></li>
-						<li><a href="<?php echo BASE_URL;?>cadastrar">Cadastrar</a></li>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+								<?php echo $viewData['usuario_nome'];?>
+								<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="<?php echo BASE_URL;?>editar">Editar Perfil</a></li>
+								<li><a href="<?php echo BASE_URL;?>sair">Sair</a></li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>

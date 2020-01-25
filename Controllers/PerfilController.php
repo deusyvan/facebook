@@ -4,7 +4,7 @@ namespace Controllers;
 use \Core\Controller;
 use \Models\Usuarios;
 
-class HomeController extends Controller {
+class PerfilController extends Controller {
 
     public function __construct()
     {
@@ -19,8 +19,10 @@ class HomeController extends Controller {
 	    
         $u = new Usuarios();
         $dados['usuario_nome'] = $u->getNome($_SESSION['lgsist']);
+        
+        $dados['info'] = $u->getDados($_SESSION['lgsist']);
 	    
-	    $this->loadTemplate('home', $dados);
+	    $this->loadTemplate('perfil', $dados);
 	}
 
 }

@@ -3,6 +3,7 @@ session_start();
 
 require 'config.php';
 require 'vendor/autoload.php';
+require 'routers.php';
 
 $core = new Core\Core();
 $core->run();

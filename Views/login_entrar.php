@@ -15,8 +15,8 @@
 						<li><a href="<?php echo BASE_URL;?>">Sistema 1</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="<?php echo BASE_URL;?>login/entrar">Login</a></li>
-						<li><a href="<?php echo BASE_URL;?>login/cadastrar">Cadastrar</a></li>
+						<li><a href="<?php echo BASE_URL;?>login">Login</a></li>
+						<li><a href="<?php echo BASE_URL;?>cadastrar">Cadastrar</a></li>
 					</ul>
 				</div>
 			</div>
