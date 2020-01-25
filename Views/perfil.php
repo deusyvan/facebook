@@ -2,7 +2,7 @@
 <form method="POST">
 	<div class="form-group">
 		<label for="nome">Nome</label>
-		<input id="nome" type="text" class="form-control" name="nome"/>
+		<input id="nome" type="text" class="form-control" name="nome" value="<?php echo $info['nome'];?>" />
 	</div>
 	<div class="form-group">
 		<label for="senha">Senha</label>
@@ -10,14 +10,20 @@
 	</div>
 	<div class="form-group">
 		<label for="bio">Biografia</label>
-		<textarea id="bio" class="form-control" name="bio"></textarea>
+		<textarea id="bio" class="form-control" name="bio" ><?php echo $info['bio'];?></textarea>
 	</div>
 	<div class="form-group">
 		<strong>E-mail</strong><br>
-		jjj@jjj.com
+		<?php echo $info['email']?>
 	</div>
 	<div class="radio"><strong>Sexo:</strong><br>
-		Masulino
+		<?php 
+		  if ($info['sexo'] == 0) {
+		      echo 'Feminino';
+		  } else {
+		      echo 'Masculino';
+		  }
+		?>
 	</div>
 	
 	<button type="submit" class="btn btn-default">Salvar</button>

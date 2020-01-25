@@ -72,9 +72,25 @@ class Usuarios extends Model {
         $sql = $this->db->query($sql);
         
         if ($sql->rowCount() > 0){
-            $sql = $sql->fetchAll();
+            $array = $sql->fetch();
             
             return $array;
         } 
+    }
+    
+    public function updatePerfil($array = array())
+    {
+        if(count($array) > 0){
+            $sql = "UPDATE usuarios SET ";
+            foreach ($array as $campo=>$valor) {
+                $campos[] = $campo." = '".$valor."'";
+            }
+            
+            $sql.= implode(', ', $campos);
+            $sql .= " WHERE id = '".($_SESSION['lgsist'])."'";
+            
+            //echo $sql; exit;
+            $this->db->query($sql);
+        }
     }
 }
