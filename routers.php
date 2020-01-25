@@ -10,5 +10,7 @@ $routes['/sair'] = '/login/logout';
 
 $routes['/editar'] = '/perfil';
 
+
 //Não muito usual pois força fazer router pra todos os tipos e a solução do home no comentário acima
 //$routes['/{titulo}'] = '/controller/acao/:titulo';
+
