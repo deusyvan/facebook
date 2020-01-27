@@ -13,8 +13,8 @@
 		</div>
 		<?php endif;?>
 		
-		<div class="widget"><h4>Meus Amigos</h4>
-		<?php echo $totalamigos; ?>amigo<?php echo ()?'':''; ?>
+		<div class="widget"><h4>Total de Amigos</h4>
+		<?php echo $totalamigos; ?> amigo<?php echo ($totalamigos == '1')?'':'s'; ?>
 		</div>
 		
 		<div class="widget"><h4>Sugestões de amigos</h4>

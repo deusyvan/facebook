@@ -44,4 +44,17 @@ class Relacionamentos extends Model {
         }
         return $array;
     }
+    
+    public function getTotalAmigos($id)
+    {
+        $sql = "SELECT COUNT(*) AS c FROM relacionamentos WHERE (usuario_de = '$id' OR usuario_para = '$id') AND status = '1'";
+        $sql = $this->db->query($sql);
+        $sql = $sql->fetch();
+        return $sql['c'];
+    }
 }
+
+
+
+
+
