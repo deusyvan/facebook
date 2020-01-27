@@ -3,6 +3,7 @@ namespace Controllers;
 
 use \Core\Controller;
 use \Models\Usuarios;
+use Models\Relacionamentos;
 
 class AjaxController extends Controller {
 
@@ -19,8 +20,17 @@ class AjaxController extends Controller {
         if(isset($_POST['id']) && !empty($_POST['id'])){
             $id = addslashes($_POST['id']);
             
-            $u = new Usuarios();
-            $u->addFriend($_SESSION['lgsist'], $id);
+            $r = new Relacionamentos();
+            $r->addFriend($_SESSION['lgsist'], $id);
+        }
+    }
+    
+    public function aceitar_friend(){
+        if(isset($_POST['id']) && !empty($_POST['id'])){
+            $id = addslashes($_POST['id']);
+            
+            $r = new Relacionamentos();
+            $r->aceitarFriend($_SESSION['lgsist'], $id);
         }
     }
 

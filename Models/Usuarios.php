@@ -120,11 +120,4 @@ class Usuarios extends Model {
         
         return $array;
     }
-    
-    public function addFriend($id1, $id2)
-    {
-        $sql = "INSERT INTO relacionamentos SET usuario_de = '$id1', usuario_para = '$id2', status = '0'";
-        $this->db->query($sql);
-        
-    }
 }

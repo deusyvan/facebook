@@ -12,3 +12,14 @@ function addFriend(id, obj){
 		});
 	}
 }
+
+function aceitarFriend(id, obj){
+	if(id != ''){
+		$(obj).closest('.requisicaoitem').fadeOut();
+				$.ajax({
+			type: 'POST',
+			url:'ajax/aceitar_friend',
+			data:{id:id}
+		});
+	}
+}

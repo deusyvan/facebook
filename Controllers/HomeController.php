@@ -3,6 +3,7 @@ namespace Controllers;
 
 use \Core\Controller;
 use \Models\Usuarios;
+use Models\Relacionamentos;
 
 class HomeController extends Controller {
 
@@ -20,7 +21,10 @@ class HomeController extends Controller {
         $u = new Usuarios();
         $dados['usuario_nome'] = $u->getNome($_SESSION['lgsist']);
         
+        $r = new Relacionamentos();
+        
         $dados['sugestoes'] = $u->getSugestoes(3);
+        $dados['requisicoes'] = $r->getRequisicoes();
 	    
 	    $this->loadTemplate('home', $dados);
 	}
