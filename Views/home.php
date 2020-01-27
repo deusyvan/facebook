@@ -12,6 +12,11 @@
 		<?php endforeach;?>
 		</div>
 		<?php endif;?>
+		
+		<div class="widget"><h4>Meus Amigos</h4>
+		<?php echo $totalamigos; ?>amigo<?php echo ()?'':''; ?>
+		</div>
+		
 		<div class="widget"><h4>Sugestões de amigos</h4>
 		<?php foreach ($sugestoes as $pessoa):?>
 			<div class="sugestaoitem">
