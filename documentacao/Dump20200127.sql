@@ -76,11 +76,11 @@ CREATE TABLE `posts` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_usuario` int(11) NOT NULL,
   `data_criacao` datetime NOT NULL,
-  `tipo` int(11) NOT NULL,
+  `tipo` varchar(50) NOT NULL,
   `texto` text NOT NULL,
   `id_grupo` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,6 +89,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
+INSERT INTO `posts` VALUES (1,1,'2020-01-27 22:11:32','0','gygyg',0),(2,1,'2020-01-27 22:11:49','0','Conteúdo criado para testar a primeira vez o posts.',0);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -150,11 +151,12 @@ DROP TABLE IF EXISTS `relacionamentos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `relacionamentos` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuario_de` int(11) NOT NULL,
   `usuario_para` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -163,6 +165,7 @@ CREATE TABLE `relacionamentos` (
 
 LOCK TABLES `relacionamentos` WRITE;
 /*!40000 ALTER TABLE `relacionamentos` DISABLE KEYS */;
+INSERT INTO `relacionamentos` VALUES (1,1,6,1),(2,2,4,1),(3,2,1,1),(4,2,6,1),(5,2,7,1),(6,6,3,1),(7,6,4,1),(8,6,7,1),(9,1,7,1),(10,1,3,1),(11,1,5,1),(12,1,4,1),(13,1,4,1),(14,1,3,1),(15,1,3,1);
 /*!40000 ALTER TABLE `relacionamentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -181,7 +184,7 @@ CREATE TABLE `usuarios` (
   `bio` text,
   `senha` varchar(32) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -190,7 +193,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'teste@teste','Teste',1,NULL,'202cb962ac59075b964b07152d234b70'),(2,'dfs@dfs','Deusyvan',1,NULL,'202cb962ac59075b964b07152d234b70');
+INSERT INTO `usuarios` VALUES (1,'teste@teste','Teste',1,'Minha bio','202cb962ac59075b964b07152d234b70'),(2,'dfs@dfs','Deusyvan Silva',1,'Esta é minha biografia, muito legal','202cb962ac59075b964b07152d234b70'),(3,'suporte@b7web.com.br','Boniek Lacerda',1,NULL,'202cb962ac59075b964b07152d234b70'),(4,'fu@fu','Fulano',1,NULL,'202cb962ac59075b964b07152d234b70'),(5,'ci@ci','Cicrano',1,NULL,'202cb962ac59075b964b07152d234b70'),(6,'bi@bi','Beltrano',0,NULL,'202cb962ac59075b964b07152d234b70'),(7,'zi@zi','Zibrano',0,NULL,'202cb962ac59075b964b07152d234b70'),(8,'fo@fo','Folow',1,NULL,'d9b1d7db4cd6e70935368a1efb10e377');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -203,4 +206,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-25  2:15:37
+-- Dump completed on 2020-01-27 23:04:43
