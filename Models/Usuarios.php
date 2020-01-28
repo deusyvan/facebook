@@ -99,6 +99,13 @@ class Usuarios extends Model {
         $array = array();
         $meuid = $_SESSION['lgsist'];
         
+        $r = new Relacionamentos();
+        $ids = $r->geIdsFriends($meuid);
+        
+        if(count($ids) == 0){
+            $ids[] = $meuid;
+        }
+        
         $sql = "
             SELECT 
                 usuarios.id, usuarios.nome 
@@ -106,7 +113,8 @@ class Usuarios extends Model {
                 usuarios 
             
             WHERE 
-                usuarios.id !='$meuid' 
+                usuarios.id != '$meuid' AND
+                usuarios.id NOT IN (".implode(',', $ids).")
                 
             ORDER BY RAND()
             LIMIT $limit

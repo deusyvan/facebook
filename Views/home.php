@@ -8,7 +8,7 @@
     			<strong><?php echo $pessoa['nome']?></strong>
 				<button class="btn btn-default pull-right" 
 				   onclick="aceitarFriend('<?php echo $pessoa['id']?>', this)">+</button>			
-			</div>
+			</div><br>
 		<?php endforeach;?>
 		</div>
 		<?php endif;?>
