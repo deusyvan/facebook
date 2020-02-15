@@ -58,5 +58,28 @@ class Posts extends Model {
         
         return $array;
     }
+    
+    public function isLiked($id,$id_usuario)
+    {
+        $sql = "SELECT * FROM posts_likes WHERE id_post = '$id' AND id_usuario = '$id_usuario'";
+        $sql = $this->db->query($sql);
+        
+        if($sql->rowCount() > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public function removeLike($id,$id_usuario)
+    {
+        $this->db->query("DELETE FROM posts_likes WHERE id_post = '$id' AND id_usuario = '$id_usuario'");
+    }
+    
+    public function addLike($id,$id_usuario)
+    {
+        $this->db->query("INSERT INTO posts_likes SET id_post = '$id', id_usuario = '$id_usuario'");
+    }
+    
 }
     

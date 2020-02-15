@@ -47,5 +47,10 @@ function curtir(obj){
 	//Altera o texto do botão conforme o like
 	$(obj).html('('+likes+') '+texto);	
 	
-	
+	//Chama o controller pelo ajax e atualiza
+	$.ajax({
+		type: 'POST',
+		url: 'ajax/curtir',
+		data:{id:id}
+	});
 }
