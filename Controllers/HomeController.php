@@ -17,20 +17,26 @@ class HomeController extends Controller {
     
 	public function index()
 	{
-	    $dados = array('usuario_nome' => '');
-	    
         $u = new Usuarios();
+        $p = new Posts();
+        $r = new Relacionamentos();
+
+        $dados = array('usuario_nome' => '');
+	    
         $dados['usuario_nome'] = $u->getNome($_SESSION['lgsist']);
         
         if (isset($_POST['post']) && !empty($_POST['post'])) {
             $postmsg = addslashes($_POST['post']);
+            $foto = array();
             
-            $p = new Posts();
-            $p->addPost($postmsg);
+            if(isset($_FILES['foto']) && !empty($_FILES['foto']['tmp_name'])){
+                $foto = $_FILES['foto'];
+            }
+            
+            $p->addPost($postmsg, $foto);
             
         }
         
-        $r = new Relacionamentos();
         
         $dados['sugestoes'] = $u->getSugestoes(3);
         $dados['requisicoes'] = $r->getRequisicoes();
