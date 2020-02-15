@@ -41,7 +41,7 @@ class HomeController extends Controller {
         $dados['sugestoes'] = $u->getSugestoes(3);
         $dados['requisicoes'] = $r->getRequisicoes();
         $dados['totalamigos'] = $r->getTotalAmigos($_SESSION['lgsist']);
-        
+        $dados['feed'] = $p->getFeed();
 	    
 	    $this->loadTemplate('home', $dados);
 	}

@@ -34,5 +34,25 @@ class Posts extends Model {
                 texto = '$msg', url = '$url', id_grupo = '0'";
         $this->db->query($sql);
     }
+    
+    public function getFeed() 
+    {
+        $array = array();
+        
+        $r = new Relacionamentos();
+        //Buscando os id dos amigos;
+        $ids = $r->geIdsFriends($_SESSION['lgsist']);
+        $ids[] = $_SESSION['lgsist'];
+        
+        //Buscando os posts
+        $sql = "SELECT * FROM posts WHERE id_usuario IN(".implode(',', $ids).") ORDER BY data_criacao DESC";
+        $sql = $this->db->query($sql);
+        
+        if($sql->rowCount() > 0){
+            $array = $sql->fetchAll();
+        }
+        
+        return $array;
+    }
 }
     
