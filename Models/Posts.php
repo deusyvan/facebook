@@ -45,7 +45,9 @@ class Posts extends Model {
         $ids[] = $_SESSION['lgsist'];
         
         //Buscando os posts
-        $sql = "SELECT * FROM posts WHERE id_usuario IN(".implode(',', $ids).") ORDER BY data_criacao DESC";
+        $sql = "SELECT *,
+             (select usuarios.nome from usuarios where usuarios.id = posts.id_usuario) AS nome
+                FROM posts WHERE id_usuario IN(".implode(',', $ids).") ORDER BY data_criacao DESC";
         $sql = $this->db->query($sql);
         
         if($sql->rowCount() > 0){
