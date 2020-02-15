@@ -46,7 +46,9 @@ class Posts extends Model {
         
         //Buscando os posts
         $sql = "SELECT *,
-             (select usuarios.nome from usuarios where usuarios.id = posts.id_usuario) AS nome
+             (select usuarios.nome from usuarios where usuarios.id = posts.id_usuario) AS nome,
+             (select count(*) from posts_likes where posts_likes.id_post = posts.id ) AS likes,
+             (select count(*) from posts_likes where posts_likes.id_post = posts.id and posts_likes.id_usuario = '".$_SESSION['lgsist']."') AS liked
                 FROM posts WHERE id_usuario IN(".implode(',', $ids).") ORDER BY data_criacao DESC";
         $sql = $this->db->query($sql);
         
