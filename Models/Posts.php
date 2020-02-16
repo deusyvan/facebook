@@ -81,5 +81,10 @@ class Posts extends Model {
         $this->db->query("INSERT INTO posts_likes SET id_post = '$id', id_usuario = '$id_usuario'");
     }
     
+    public function addComentario($id,$id_usuario,$txt)
+    {
+        $this->db->query("INSERT INTO posts_comentarios SET id_post = '$id', id_usuario = '$id_usuario', data_criacao = NOW(), texto = '$txt'");
+    }
+    
 }
     

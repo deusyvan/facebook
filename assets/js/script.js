@@ -54,3 +54,30 @@ function curtir(obj){
 		data:{id:id}
 	});
 }
+
+
+function displayComentario(obj){
+	
+	//Buscar a div superior (pai) ao botão que acionou a função. Depois busca a div postitem_comentario. E exibe a div
+	$(obj).closest('.postitem_botoes').find('.postitem_comentario').show();
+}
+
+function comentar(obj){
+	//Busca o id do post
+	var id = $(obj).attr('data-id');
+	//Volta na div pai pra buscar o texto
+	var txt = $(obj).closest('.postitem_comentario').find('.postitem_txt').val();
+	//Chama o ajax para executar o controller ajax na ação comentar
+	$.ajax({
+		type: 'POST',
+		url: 'ajax/comentar',
+		data:{id:id, txt:txt},
+		success: function(){
+			//Fecha a div
+			$(obj).closest('.postitem_comentario').hide();
+			//busca atraves da div pai o campo de txt e Limpa
+			$(obj).closest('.postitem_comentario').find('.postitem_txt').val('');
+		}
+	});
+	
+}

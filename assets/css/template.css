@@ -23,3 +23,7 @@
 	background-color: #EEE;
 	padding: 10px;
 }
+
+.postitem_comentario{
+	display: none;
+}

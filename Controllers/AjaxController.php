@@ -51,5 +51,25 @@ class AjaxController extends Controller {
             }
         }
     }
+    
+    public function comentar()
+    {
+        if(isset($_POST['id']) && !empty($_POST['id'])){
+            //Recebe o id e o txt recebido pelo post de ajax: data:{id:id, txt:txt}
+            $id = addslashes($_POST['id']);
+            $txt = addslashes($_POST['txt']);
+            //Busca o id do usuario logado
+            $id_usuario = $_SESSION['lgsist'];
+            $p = new Posts();
+            
+            //Verifica se txt está preenchido:
+            if(!empty($txt)){
+                //Realiza o comentario inserindo no model
+                $p->addComentario($id,$id_usuario,$txt);
+            }
+            
+            
+        }
+    }
 
 }
