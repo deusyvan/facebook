@@ -20,6 +20,12 @@
     	</div>
     </div>
     <div class="postitem_comentarios">
-    
+    	<ul>
+        	<?php foreach ($comentarios as $comentario):?>
+    		<li>
+        		<?php echo $comentario['nome'].": ".$comentario['texto'];?>
+        	</li>
+        	<?php endforeach;?>
+    	</ul>
     </div>
 </div>

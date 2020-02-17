@@ -67,8 +67,6 @@ class AjaxController extends Controller {
                 //Realiza o comentario inserindo no model
                 $p->addComentario($id,$id_usuario,$txt);
             }
-            
-            
         }
     }
 

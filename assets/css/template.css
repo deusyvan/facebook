@@ -27,3 +27,7 @@
 .postitem_comentario{
 	display: none;
 }
+
+.postitem_comentarios li{
+	display: block;
+}

@@ -2,6 +2,7 @@
 namespace Models;
 
 use \Core\Model;
+use PDO;
 
 class Posts extends Model {
     
@@ -38,6 +39,7 @@ class Posts extends Model {
     public function getFeed() 
     {
         $array = array();
+        $posts = array();
         
         $r = new Relacionamentos();
         //Buscando os id dos amigos;
@@ -51,12 +53,15 @@ class Posts extends Model {
              (select count(*) from posts_likes where posts_likes.id_post = posts.id and posts_likes.id_usuario = '".$_SESSION['lgsist']."') AS liked
                 FROM posts WHERE id_usuario IN(".implode(',', $ids).") ORDER BY data_criacao DESC";
         $sql = $this->db->query($sql);
-        
         if($sql->rowCount() > 0){
             $array = $sql->fetchAll();
+            foreach ($array as $post) {
+                $post['comentarios'] = $this->buscarComentarios($post['id']);
+                $posts[] = $post;
+            }
         }
         
-        return $array;
+        return $posts;
     }
     
     public function isLiked($id,$id_usuario)
@@ -86,5 +91,14 @@ class Posts extends Model {
         $this->db->query("INSERT INTO posts_comentarios SET id_post = '$id', id_usuario = '$id_usuario', data_criacao = NOW(), texto = '$txt'");
     }
     
+    public function buscarComentarios($id_post) {
+        $array = array();
+        $sql = "SELECT 
+                (select usuarios.nome from usuarios where usuarios.id = posts_comentarios.id_usuario) AS nome,
+                 texto FROM posts_comentarios WHERE id_post = '$id_post'";
+        $sql = $this->db->query($sql);
+        $array = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $array;
+    }
 }
     

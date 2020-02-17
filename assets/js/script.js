@@ -80,4 +80,5 @@ function comentar(obj){
 		}
 	});
 	
+	window.location.href = "/facebook";
 }
