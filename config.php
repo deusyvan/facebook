@@ -3,16 +3,16 @@ require 'environment.php';
 
 $config = array();
 if(ENVIRONMENT == 'development') {
-	define("BASE_URL", "http://localhost/facebook/");
+	define("BASE_URL", "http://facebook/");
 	$config['dbname'] = 'facebook';
 	$config['host'] = 'localhost';
-	$config['dbuser'] = 'dfsweb';
+	$config['dbuser'] = 'dfs';
 	$config['dbpass'] = '28033011';
 } else {
-	define("BASE_URL", "http://localhost/mvc_psr4/");
+	define("BASE_URL", "http://mvc_psr4/");
 	$config['dbname'] = 'facebook';
 	$config['host'] = 'localhost';
-	$config['dbuser'] = 'dfsweb';
+	$config['dbuser'] = 'dfs';
 	$config['dbpass'] = '28033011';
 }
 
