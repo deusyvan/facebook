@@ -1,15 +1,12 @@
 <?php
 namespace Controllers;
-
 use \Core\Controller;
 use \Models\Usuarios;
 use Models\Relacionamentos;
 use Models\Posts;
 use Models\Grupos;
 
-
 class HomeController extends Controller {
-
     public function __construct()
     {
         parent::__construct();
@@ -35,9 +32,7 @@ class HomeController extends Controller {
             if(isset($_FILES['foto']) && !empty($_FILES['foto']['tmp_name'])){
                 $foto = $_FILES['foto'];
             }
-            
             $p->addPost($postmsg, $foto);
-            
         }
         
         if (isset($_POST['grupo']) && !empty($_POST['grupo'])) {

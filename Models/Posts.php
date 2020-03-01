@@ -6,7 +6,7 @@ use PDO;
 
 class Posts extends Model {
     
-    public function addPost($msg, $foto)
+    public function addPost($msg, $foto, $id_grupo = '0')
     {
         $usuario = $_SESSION['lgsist'];
         $tipo = 'texto';
@@ -32,11 +32,11 @@ class Posts extends Model {
         }
 
         $sql = "INSERT INTO posts SET id_usuario = '$usuario', data_criacao = NOW(), tipo = '$tipo', 
-                texto = '$msg', url = '$url', id_grupo = '0'";
+                texto = '$msg', url = '$url', id_grupo = '$id_grupo'";
         $this->db->query($sql);
     }
     
-    public function getFeed() 
+    public function getFeed($id_grupo = '0') 
     {
         $array = array();
         $posts = array();
@@ -50,8 +50,9 @@ class Posts extends Model {
         $sql = "SELECT *,
              (select usuarios.nome from usuarios where usuarios.id = posts.id_usuario) AS nome,
              (select count(*) from posts_likes where posts_likes.id_post = posts.id ) AS likes,
-             (select count(*) from posts_likes where posts_likes.id_post = posts.id and posts_likes.id_usuario = '".$_SESSION['lgsist']."') AS liked
-                FROM posts WHERE id_usuario IN(".implode(',', $ids).") ORDER BY data_criacao DESC";
+             (select count(*) from posts_likes where posts_likes.id_post = posts.id 
+              and posts_likes.id_usuario = '".$_SESSION['lgsist']."') AS liked
+                FROM posts WHERE id_usuario IN(".implode(',', $ids).") AND id_grupo = '$id_grupo' ORDER BY data_criacao DESC";
         $sql = $this->db->query($sql);
         if($sql->rowCount() > 0){
             $array = $sql->fetchAll();

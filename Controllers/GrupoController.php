@@ -4,6 +4,7 @@ namespace Controllers;
 use \Core\Controller;
 use \Models\Usuarios;
 use \Models\Grupos;
+use Models\Posts;
 
 class GrupoController extends Controller {
 
@@ -18,16 +19,31 @@ class GrupoController extends Controller {
     {
         $u = new Usuarios();
         $g = new Grupos();
+        $p = new Posts();
         
         $dados = array(
             'usuario_nome' => ''
         );
         
         $dados['usuario_nome'] = $u->getNome($_SESSION['lgsist']);
+        
+        if (isset($_POST['post']) && !empty($_POST['post'])) {
+            $postmsg = addslashes($_POST['post']);
+            $foto = array();
+            
+            if(isset($_FILES['foto']) && !empty($_FILES['foto']['tmp_name'])){
+                $foto = $_FILES['foto'];
+            }
+            
+            $p->addPost($postmsg, $foto, $id_grupo);
+            
+        }
+        
         $dados['info'] = $g->getInfo($id_grupo);
         $dados['id_grupo'] = $id_grupo;
         $dados['is_membro'] = $g->isMembro($id_grupo, $_SESSION['lgsist']);
         $dados['qt_membros'] = $g->getQuantMembros($id_grupo);
+        $dados['feed'] = $p->getFeed($id_grupo);
         
         $this->loadTemplate('grupo', $dados);
     }
